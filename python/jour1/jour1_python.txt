@@ -1,0 +1,303 @@
+String
+ex_1 :Écrivez une fonction en Python qui prend une chaîne de caractères en entrée et
+retourne la chaîne inversée.
+test : print(inverser_chaine("Bonjour")) # Output: ruojnoB
+
+        def inverser_chaine(chaine):
+            reversed = chaine [::-1]
+            print(reversed)
+            
+        inverser_chaine('Bonjour')
+
+
+ex_2: Créez une fonction qui compte le nombre d'occurrences de chaque lettre dans une
+chaîne de caractères.
+test: print(compter_lettres("hello")) # Output: {'h': 1, 'e': 1, 'l': 2, 'o': 1}
+
+        def compter_lettres(chaine):
+            
+            lettres = {}
+
+            for i in chaine:
+                if i in lettres:
+                    lettres[i] += 1
+                else:
+                    lettres[i] = 1
+
+            print(str(lettres))
+            
+        compter_lettres('hello')
+
+
+ex_3: Écrivez une fonction qui vérifie si une chaîne est un palindrome (se lit de la même
+façon dans les deux sens).
+test: print(est_palindrome("radar")) # Output: True
+print(est_palindrome("python")) # Output: False
+
+        def est_palindrome(chaine):
+            
+            reversed = chaine [::-1]
+
+            if (reversed == chaine):
+                print("palindrome")
+            else:
+                print("pas palindrome")
+            
+        est_palindrome('radar')
+
+
+ex_4 : Créez une fonction qui remplace tous les espaces d'une chaîne par des tirets.
+test : print(remplacer_espaces("Bonjour le monde")) # Output: Bonjour-le-monde
+
+        def remplacer_espaces(chaine):
+            
+            sans_espace = chaine.replace(" ", "-")
+            print(sans_espace)
+            
+        remplacer_espaces('salut a tous')
+
+
+
+ex_5: Écrivez une fonction qui prend une chaîne de caractères et retourne le mot le plus
+long de cette chaîne.
+test : print(trouver_le_plus_long_mot("Le python est un excellent langage de
+programmation")) # Output: programmation
+
+        def plus_long(chaine):
+
+            longest = ''
+            for mot in chaine.split():
+                if len(mot) > len(longest):
+                    longest = mot
+
+            print(longest)
+            
+        plus_long('python est un langage de programmation')
+
+
+ex_6 : Écrivez une fonction qui détecte toutes les dates au format JJ/MM/AAAA dans une
+chaîne de caractères et les retourne dans une liste.
+test : print(detecter_dates("Les dates importantes sont 12/05/2022 et 23/11/2023."))
+# Output: ['12/05/2022', '23/11/2023']
+
+        def detecter_dates(chaine):
+
+            date = "/".join(chaine.split()[-1].split("/"))
+            print (date)
+            
+        detecter_dates("Les dates importantes sont 12/05/2022 et 23/11/2023.")
+
+
+
+Listes
+
+ex_7 : Écrire une fonction en Python qui prend une liste en entrée et retourne la liste
+inversée.
+test : print(inverser_liste([1, 2, 3, 4, 5])) # Affiche [5, 4, 3, 2, 1]
+
+def inverser_liste(list):
+
+    list.reverse()
+    print(list)
+
+inverser_liste([1,2,3,4,5])
+
+
+ex_8 : Écrire une fonction qui prend deux listes et renvoie une nouvelle liste contenant
+uniquement les éléments communs aux deux listes.
+test : print(elements_communs([1, 2, 3, 4], [2, 4, 6, 8])) # Affiche [2, 4]
+
+        def elements_communs(list1, list2):
+
+            list1_set = set(list1)
+            list2_set = set(list2)
+
+            if (list1_set & list2_set):
+                print(list1_set & list2_set)
+            else:
+                print("pas d'élément commun")
+
+        elements_communs([1,2,3,4,5],[1,3,5,7,9])
+
+
+ex_9 : Écrire une fonction qui compte combien de fois un élément apparaît dans une liste.
+test : print(compter_occurrences([1, 4, 2, 7, 4, 4, 3], 4)) # Affiche 3
+
+        def compter_occurrences(liste, element):
+            
+            occurrences = liste.count(element)
+            print(occurrences)
+
+        compter_occurrences([1, 2, 3, 4, 5, 4, 4], 4)
+
+
+ex_10 : Écrire une fonction qui trouve la plus longue sous-liste croissante dans une liste
+d'entiers.
+test : print(plus_longue_croissante([1, 2, 2, 3, 2, 3, 4, 1])) # Affiche [2, 3, 4]
+
+Tuples
+ex_11 : Créez un tuple nommé mon_tuple contenant les éléments suivants : 1, "chat", 3.14,
+True. Ensuite, accédez et imprimez le deuxième élément du tuple.
+
+        def mon_tuple():
+
+            mon_tuple = (1, "chat", 3.14, True)
+            print(mon_tuple[1])
+            
+        mon_tuple()
+
+
+ex_12 : Essayez de modifier le troisième élément du tuple mon_tuple créé précédemment
+en une autre valeur, par exemple "python". Expliquez l'erreur, si elle se produit.
+
+        def mon_tuple():
+
+            mon_tuple = (1, "chat", 3.14, True)
+            mon_tuple[1] = "python"
+
+            print (mon_tuple[2])
+            
+        mon_tuple()
+
+        TypeError: 'tuple' object does not support item assignment
+        Ce n'est pas possible de modifier les valeurs d'un tuple après sa création.
+
+
+ex_13 : Écrivez une fonction max_min_moyenne qui prend un tuple de nombres et
+retourne un tuple contenant le maximum, le minimum et la moyenne des nombres. Testez
+cette fonction avec un tuple de votre choix.
+test : test_tuple = (10, 20, 30, 40, 50)
+resultat = max_min_moyenne(test_tuple)
+print("Max, Min, Moyenne:", resultat)
+
+        def max_min_moyenne(*args):
+
+            size = len(args)
+
+            maxi = max(args)
+            mini = min(args)
+            moy = sum(args) / size
+            
+            print (maxi)
+            print (mini)
+            print (moy)
+            
+        max_min_moyenne(10,20,30,40,50)
+
+
+ex_14 : Créez une liste de tuples nommée étudiants, où chaque tuple contient le nom d'un
+étudiant et sa note (par exemple, ("Alice", 88)). Écrivez une fonction qui trie cette liste en
+fonction des notes des étudiants de manière décroissante.
+test :
+etudiants = [("Alice", 88), ("Bob", 95), ("Charlie", 78)]
+etudiants_tries = trier_etudiants(etudiants)
+print("Etudiants triés:", etudiants_tries)
+
+        def trier_etudiants(*etudiants):
+            
+            etudiants_tries = sorted(etudiants, key=lambda x: x[1], reverse=True)
+
+            for etudiant in etudiants_tries:
+                print(f"{etudiant[0]} {etudiant[1]}")
+
+        trier_etudiants(("Alice", 88), ("Bob", 95), ("Charlie", 78))
+
+
+ex_15 : On vous donne une liste de tuples nommée data. Chaque tuple contient un
+identifiant unique sous forme de chaîne, un nombre, et une chaîne de caractères pouvant
+être soit "actif" soit "inactif". Par exemple : data = [("id1", 10, "actif"), ("id2", 15, "inactif"), ...].
+Votre tâche est de créer une fonction traiter_data qui effectue les opérations suivantes :
+Filtrez pour ne garder que les tuples où le statut est "actif".
+Triez les tuples filtrés par le nombre en ordre décroissant.
+Retournez une nouvelle liste de tuples, mais chaque tuple doit uniquement contenir
+l'identifiant et le nombre, sans le statut.
+
+test :
+# Test
+data = [("id1", 10, "actif"), ("id2", 15, "inactif"), ("id3", 20, "actif")]
+resultat = traiter_data(data)
+print(resultat)
+
+Dictionnaires (dict)
+
+ex_16: Créez un dictionnaire nommé livre qui contient les clés suivantes avec les valeurs
+correspondantes : titre ("Les Misérables"), auteur ("Victor Hugo") et année (1862). Ensuite,
+affichez la valeur associée à la clé auteur.
+
+        livre = {"titre": "Les misérables", "auteur": "Victor Hugo", "date": 1862}
+
+        auteur_livre = livre["auteur"]
+        print(auteur_livre)
+
+
+
+ex_17: À partir du dictionnaire livre créé dans l'exercice 1, modifiez la valeur de l'année de
+publication à 1865. Ajoutez ensuite une nouvelle paire clé-valeur : genre avec la valeur
+"Roman".
+
+        livre = {"titre": "Les misérables", "auteur": "Victor Hugo", "date": 1862}
+
+        auteur_livre = livre["auteur"]
+        print(auteur_livre)
+
+        livre.update({"date": 1865})
+        livre.update({"genre": "roman"})
+
+        print (livre)
+
+
+ex_18: Écrivez un script qui parcourt chaque paire clé-valeur du dictionnaire livre et affiche
+ces paires sous la forme "Clé: Valeur".
+
+ex_19: Vous avez deux dictionnaires, dictionnaire1 avec les clés "un", "deux", "trois" et leurs
+valeurs respectives 1, 2, 3, et dictionnaire2 avec les clés "quatre", "cinq", "six" et leurs
+valeurs 4, 5, 6. Fusionnez ces deux dictionnaires en un seul.
+
+        def merge(d1, d2):
+            result = d1.copy()
+            result.update(d2)
+            return result
+
+        dic1 = {"un": 1, "deux": 2, "trois": 3}
+        dic2 = {"quatre": 4, "cinq": 5, "six": 6}
+
+        merged_dict = merge(dic1, dic2)
+        print(merged_dict)
+
+
+ex_20 : Créez une fonction dictionnaire_croise qui prend deux dictionnaires en entrée et
+retourne un nouveau dictionnaire. Les clés du nouveau dictionnaire sont les éléments qui
+sont à la fois clés dans le premier et valeurs dans le second. Les valeurs correspondantes
+sont les valeurs associées à ces clés dans le premier dictionnaire.
+
+test :
+dico1 = {"a": 1, "b": 2, "c": 3}
+dico2 = {"x": "a", "y": "b"}
+resultat = dictionnaire_croise(dico1, dico2)
+print(resultat)
+
+Ensembles (set) :
+
+ex_21: Écrivez une fonction qui prend deux ensembles de nombres. La fonction doit
+retourner un nouvel ensemble qui est l'intersection des deux ensembles donnés, mais en
+éliminant tous les éléments qui sont des multiples de 3.
+set1 = {1, 2, 3, 4, 6, 9}
+set2 = {2, 3, 5, 6, 7, 9}
+print(intersection_without_multiples_of_three(set1, set2))
+{2}
+
+set1 = {1, 2, 3, 4, 6, 9}
+set2 = {2, 3, 5, 6, 7, 9}
+
+set1.union(set2)
+
+print (set1.union(set2))
+
+ex_22 : Écrivez une fonction qui prend une liste d'ensembles de nombres et un nombre n.
+La fonction doit retourner l'union de tous les ensembles, mais en excluant le nombre n de
+cette union.
+# Exemple d'utilisation
+list_of_sets = [{1, 2, 3}, {3, 4, 5}, {5, 6, 7}]
+n = 5
+print(union_excluding_n(list_of_sets, n))
+{1, 2, 3, 4, 6, 7}

@@ -1,0 +1,98 @@
+Documentation :
+scapy: https://www.freecodecamp.org/news/how-to-use-scapy-python-networking/
+https://www.youtube.com/watch?v=oOi5K1GsfDk
+https://www.youtube.com/watch?v=pWtSNBoGz-U&t=192s
+https://www.youtube.com/watch?v=7BssAFT9K6g
+
+firewall: https://www.linuxtricks.fr/wiki/firewalld-le-pare-feu-facile-sous-linux
+
+Systeme
+socket
+
+ex_1: Écrire un script Python qui affiche des informations de base sur le système,
+telles que le nom d'hôte, l'adresse IP, l'architecture du processeur et la version du
+système d'exploitation
+
+    import socket
+    import platform
+    hostname = socket.gethostname()
+    IPAddr = socket.gethostbyname(hostname)
+    OSname = platform.system()
+    processor = platform.processor()
+    
+    print("Nom PC: " + hostname)
+    print("IP: " + IPAddr)
+    print("OS : " + OSname)
+    print("processeur : " + processor)
+
+os
+
+ex_2: Créer un script qui liste tous les fichiers d'un répertoire spécifié, en incluant
+leur taille. La fonction doit prendre en paramètre le dossier
+
+    import os
+
+    def listFiles(path):
+        dir_list = os.listdir(path)
+
+        for item in dir_list:
+            item_path = os.path.join(path, item)
+            size = os.path.getsize(item_path) if os.path.isfile(item_path) else None
+            print(f"{item} - {size} o")
+
+    listFiles("/bin")
+
+
+psutil
+ex_3: Écrire un script qui affiche l'utilisation de la mémoire du système.
+
+    import os
+    import psutil
+
+    def memory():
+
+        # Afficher l'utilisation de la mémoire
+        memory_info = psutil.virtual_memory()
+        print(f"\nMémoire: : {memory_info.used / (1024 ** 2):.2f} O utilisé sur {memory_info.total / (1024 ** 2):.2f} O")
+
+    memory()
+
+
+
+ex_4: Créer un script qui surveille et affiche l'utilisation du CPU en pourcentage
+toutes les 5 secondes.
+
+    import psutil
+    import time
+
+    def monitor_cpu(interval=5, duration=None):
+        start_time = time.time()
+
+        while duration is None or time.time() - start_time < duration:
+            cpu_usage = psutil.cpu_percent(interval=interval)
+            print(f"Utilisation du CPU : {cpu_usage}%")
+            time.sleep(interval)
+
+    monitor_cpu(duration=30)
+
+shutil
+ex_5 : Écrire un script qui vérifie l'espace disque disponible et utilisé sur le disque
+principal.
+
+    import shutil 
+    
+    path = "C:\\Users\\itaka\\Documents\\python"
+
+    stat = shutil.disk_usage(path) 
+
+    print("Utilisation du disque:") 
+    print(stat) 
+
+Réseau
+
+ex_6: révisez vos classique avec le vagrantfile et le fichier linux contenu dans le dossier
+réseau 1
+
+ex_7: Approfondissez socket avec se tuto
+
+https://python.antoinepernot.fr/cours.php?course=chap7
